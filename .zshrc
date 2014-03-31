@@ -8,23 +8,60 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-export CSCOPE_DB=/home/marek/cscope.out
-
 # aliases
+alias xterm='xterm -bg black -fg white'
 alias ls='ls --color=auto'
-alias llvmdev='. /home/marek/private/LLVMSlicer/llvmdev'
+alias wenv='export WAYLAND_ENV=1; cd /home/marek/sources; ./wayland-build.sh env'
 
 #prompt
 autoload -U colors && colors
-PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# "
+
+PROMPT="%{$fg_bold[green]%}%n%{$reset_color%} %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# "
 RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
+if [ "$WAYLAND_ENV" = 1 ]; then
+	PROMPT="[Wl] $PROMPT"
+	export WAYLAND_DEBUG=1
+fi
+
+if [ -f /usr/bin/color-gcc -o -f /bin/color-gcc ]; then
+	alias gcc=color-gcc
+fi
+
+# wrapper for bindkey
+function bk()
+{
+	if [ "$#" = "0" ]; then
+		bindkey
+	elif [ "$1" = "-v" ]; then
+		echo "Vim mode"
+		bindkey -v
+	elif [ "$1" = "-e" ]; then
+		echo "Emacs mode"
+		bindkey -e
+	else
+		bindkey "$1"
+	fi
+}
+
+# set bindkey -v (Vim mode)
+#bk -v
+
+# print welcome message
+uname -srn
+date
+echo -e "--------------------------------------------------\n"
+
+# ##############################################################################
+# key bindings
+# ##############################################################################
 bindkey "[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
-# key bindings
+
 typeset -A key
 
 key[Home]=${terminfo[khome]}
@@ -63,3 +100,11 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
+
+export LC_ALL=C
+export LANG=C
+
+export G_MESSAGES_DEBUG=all
+export CFLAGS='-Wall -Wextra -g'
+
+export EDITOR=vim
