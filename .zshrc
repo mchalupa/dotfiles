@@ -16,16 +16,28 @@ bindkey -e
 alias xterm='xterm -bg black -fg white'
 alias ls='ls --color=auto'
 alias wenv='export WAYLAND_ENV=1; cd /home/marek/sources; ./wayland-build.sh env'
+alias i3lock='i3lock -c 000000'
 
 #prompt
 autoload -U colors && colors
+source ~/.git-prompt.sh
 
 PROMPT="%{$fg_bold[green]%}%n%{$reset_color%} %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# "
-RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
+# RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
+
+# set git prompt
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUPSTREAM="auto"
+#setopt PROMPT_SUBST ; PS1='%{$fg[gray]%}$(__git_ps1 "(%s) ")%{$reset_color%}%{$fg[green]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# '
+
+# RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
+setopt PROMPT_SUBST ; RPROMPT='%{$fg[gray]%}$(__git_ps1 "(%s) ")%{$reset_color%}[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]'
+
+
 
 if [ "$WAYLAND_ENV" = 1 ]; then
 	PROMPT="[Wl] $PROMPT"
-	export WAYLAND_DEBUG=1
 fi
 
 if [ -f /usr/bin/color-gcc -o -f /bin/color-gcc ]; then
