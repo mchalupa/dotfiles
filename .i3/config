@@ -155,19 +155,20 @@ exec --no-startup-id sh ~/.fehbg
 
 # set turning off screen after timeout in seconds
 exec --no-startup-id xset dpms 180
+exec --no-startup-id xrandr --output HDMI3 --left-of LVDS1
 
 # redshift
 exec --no-startup-id redshift -t 5500:3700 -g 1.00 1.00 1.00 -m randr -l 48.2:17.1
 
 # volume
-bindsym XF86AudioMute exec "pactl set-sink-mute SINK toggle"
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume SINK +1%"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume SINK -- -1%"
+bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +2%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -- -2%"
 
 exec --no-startup-id xrdb -merge ~/.Xresources
 
 bindsym $mod+p move scratchpad
-bindsym $mod+Shift+p scratchpad show
+bindsym $mod+o scratchpad show
 
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
