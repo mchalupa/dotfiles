@@ -71,8 +71,8 @@ xterm*toolBar:            false
 ! URxvt*scrollWithBuffer:               boolean
 ! URxvt*inheritPixmap:                  boolean
 ! URxvt*tintColor:                      color
-! URxvt*transparent:                    true
-  URxvt*shading:                        7
+  URxvt*transparent:                    true
+  URxvt*shading:                        10
   URxvt*blurRadius:                     0x0
 ! URxvt*fading:                         50
 ! URxvt*fadeColor:                      #1f1f1f
@@ -88,7 +88,7 @@ xterm*toolBar:            false
 ! URxvt*cursorBlink:                    boolean
 ! URxvt*pointerBlank:                   boolean
   URxvt*depth:                          32
-  URxvt*background:                     [95]#101010
+  URxvt*background:                     [90]#000000
 ! URxvt*foreground:                     color
 ! URxvt*color0:                         color
 ! URxvt*color1:                         color
