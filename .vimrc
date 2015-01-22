@@ -26,8 +26,11 @@ endif
 " autocmd FileType C++ setl sw=4 sts=4 ts=4
 autocmd FileType haskell setl sw=4 sts=4 ts=4 et
 autocmd FileType make setl sts=8 sw=8 ts=8 noexpandtab
-
-command Gnu setl sw=2 sws=2 sts=2 ts=2 et
+augroup filetype
+      au! BufRead,BufNewFile *.ll     set filetype=llvm
+      au! BufRead,BufNewFile *.llvm   set filetype=llvm
+      au! BufRead,BufNewFile *.cpp    set filetype=cpp
+augroup END
 
 " add first tags in tree on the way to root
 set tags=./tags;/
@@ -56,6 +59,12 @@ function! UpdateTags()
   call DelTagOfFile(f)
   let resp = system(cmd)
 endfunction
-autocmd BufWritePost *.cpp,*.h,*.c call UpdateTags()
+autocmd BufWritePost *.cpp,*.h,*.c,*.py,*.js,*.hs,*.hpp call UpdateTags()
 
 set backspace=indent,eol,start
+
+set fileencodings=ansi,utf-8
+
+if filereadable(".vimrc") && getcwd() != $HOME
+  source .vimrc
+endif
