@@ -148,7 +148,11 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+	position top
 }
+
+popup_during_fullscreen smart
+workspace_auto_back_and_forth yes
 
 # set background
 exec --no-startup-id sh ~/.fehbg
@@ -156,6 +160,7 @@ exec --no-startup-id sh ~/.fehbg
 # set turning off screen after timeout in seconds
 exec --no-startup-id xset dpms 180
 exec --no-startup-id xrandr --output HDMI3 --left-of LVDS1
+exec --no-startup-id nm-applet
 
 # redshift
 exec --no-startup-id redshift -t 5500:3700 -g 1.00 1.00 1.00 -m randr -l 48.2:17.1
@@ -170,5 +175,5 @@ exec --no-startup-id xrdb -merge ~/.Xresources
 bindsym $mod+p move scratchpad
 bindsym $mod+o scratchpad show
 
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 3"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 3"
