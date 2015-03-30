@@ -65,6 +65,10 @@ set backspace=indent,eol,start
 
 set fileencodings=ansi,utf-8
 
+" map switching tabs
+map <C-PageUp> :tabnext
+map <C-PageDown> :tabprev
+
 if filereadable(".vimrc") && getcwd() != $HOME
   source .vimrc
 endif
