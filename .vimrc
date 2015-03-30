@@ -20,6 +20,8 @@ endif
 
 :filetype plugin on
 
+command Gnu setl sw=2 sws=2 sts=2 ts=2 et
+
 " coding styles
 " autocmd FileType C setl sw=8 sts=8 ts=8
 " autocmd FileType python setl sw=4 sts=4 ts=4 et
