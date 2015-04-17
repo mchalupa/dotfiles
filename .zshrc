@@ -22,7 +22,7 @@ alias i3lock='i3lock -c 000000'
 autoload -U colors && colors
 source ~/.git-prompt.sh
 
-PROMPT="%{$fg_bold[green]%}%n%{$reset_color%} %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# "
+PROMPT="%{$fg_bold[green]%}%n@%m%{$reset_color%} %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# "
 # RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 # set git prompt
