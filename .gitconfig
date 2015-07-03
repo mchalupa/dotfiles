@@ -1,0 +1,9 @@
+[user]
+	email = mchqwerty@gmail.com
+	name = Marek Chalupa
+
+[sendemail]
+	smtpEncryption = tls
+	smtpServer = smtp.gmail.com
+	smtpUser = mchqwerty@gmail.com
+	smtpServerPort = 587
