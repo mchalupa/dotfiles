@@ -17,6 +17,8 @@ alias xterm='xterm -bg black -fg white'
 alias ls='ls --color=auto'
 alias wenv='export WAYLAND_ENV=1; cd /home/marek/sources; ./wayland-build.sh env'
 alias i3lock='i3lock -c 000000'
+alias dsh='jhbuild shell'
+alias gsw='jhbuild run dbus-launch gnome-session --session=gnome-wayland'
 
 #prompt
 autoload -U colors && colors
@@ -39,6 +41,12 @@ setopt PROMPT_SUBST ; RPROMPT='%{$fg[gray]%}$(__git_ps1 "(%s) ")%{$reset_color%}
 if [ "$WAYLAND_ENV" = 1 ]; then
 	PROMPT="[Wl] $PROMPT"
 fi
+
+if [ -n "$JHBUILD_PREFIX" ]; then
+	PROMPT="[jh] $PROMPT"
+fi
+
+
 
 if [ -f /usr/bin/color-gcc -o -f /bin/color-gcc ]; then
 	alias gcc=color-gcc
@@ -120,3 +128,4 @@ export G_MESSAGES_DEBUG=all
 export CFLAGS='-Wall -Wextra -g'
 
 export EDITOR=vim
+export PATH="$HOME/.local/bin:$PATH"
