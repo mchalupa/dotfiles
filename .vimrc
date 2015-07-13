@@ -25,7 +25,8 @@ command Gnu setl sw=2 sws=2 sts=2 ts=2 et
 " coding styles
 " autocmd FileType C setl sw=8 sts=8 ts=8
 " autocmd FileType python setl sw=4 sts=4 ts=4 et
-" autocmd FileType C++ setl sw=4 sts=4 ts=4
+" autocmd FileType C++ setl sw=4 sts=4 ts=4 et
+autocmd FileType cpp setl sw=4 sts=4 ts=4 et
 autocmd FileType haskell setl sw=4 sts=4 ts=4 et
 autocmd FileType make setl sts=8 sw=8 ts=8 noexpandtab
 augroup filetype
@@ -65,12 +66,13 @@ autocmd BufWritePost *.cpp,*.h,*.c,*.py,*.js,*.hs,*.hpp call UpdateTags()
 
 set backspace=indent,eol,start
 
-set fileencodings=ansi,utf-8
+scriptencoding utf-8
+set encoding=utf-8
 
 " map switching tabs
 map <C-PageUp> :tabnext
 map <C-PageDown> :tabprev
 
-if filereadable(".vimrc") && getcwd() != $HOME
-  source .vimrc
+if filereadable(".vimrc.local") && getcwd() != $HOME
+  source .vimrc.local
 endif
