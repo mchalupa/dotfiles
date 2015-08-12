@@ -19,6 +19,7 @@ alias wenv='export WAYLAND_ENV=1; cd /home/marek/sources; ./wayland-build.sh env
 alias i3lock='i3lock -c 000000'
 alias dsh='jhbuild shell'
 alias gsw='jhbuild run dbus-launch gnome-session --session=gnome-wayland'
+alias gswp="pgrep -a gnome-shell | grep /home/marek/local/bin/gnome-shell | cut -d ' ' -f 1"
 
 #prompt
 autoload -U colors && colors
