@@ -156,7 +156,8 @@ bar {
 popup_during_fullscreen smart
 
 # set background
-exec --no-startup-id sh ~/.fehbg
+#exec --no-startup-id sh ~/.fehbg
+exec --no-startup-id sh -c 'feh --bg-scale "`~/Pictures/random_background.sh`"'
 
 # set turning off screen after timeout in seconds
 exec --no-startup-id xset dpms 180
