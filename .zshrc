@@ -125,7 +125,6 @@ fi
 export LC_ALL=C
 export LANG=C
 
-export G_MESSAGES_DEBUG=all
 export CFLAGS='-Wall -Wextra -g'
 
 export EDITOR=vim
