@@ -15,11 +15,12 @@ bindkey -e
 # aliases
 alias xterm='xterm -bg black -fg white'
 alias ls='ls --color=auto'
-alias wenv='export WAYLAND_ENV=1; cd /home/marek/sources; ./wayland-build.sh env'
 alias i3lock='i3lock -c 000000'
 alias dsh='jhbuild shell'
 alias gsw='jhbuild run dbus-launch gnome-session --session=gnome-wayland'
 alias gswp="pgrep -a gnome-shell | grep /home/marek/local/bin/gnome-shell | cut -d ' ' -f 1"
+
+export CC=clang
 
 #prompt
 autoload -U colors && colors
@@ -49,8 +50,8 @@ fi
 
 
 
-if [ -f /usr/bin/color-gcc -o -f /bin/color-gcc ]; then
-	alias gcc=color-gcc
+if which colorgcc &>/dev/null; then
+	alias gcc=colorgcc
 fi
 
 # wrapper for bindkey
@@ -121,9 +122,6 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
-
-export LC_ALL=C
-export LANG=C
 
 export CFLAGS='-Wall -Wextra -g'
 
