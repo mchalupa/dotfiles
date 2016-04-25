@@ -126,4 +126,4 @@ fi
 export CFLAGS='-Wall -Wextra -g'
 
 export EDITOR=vim
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cabal/bin:$HOME/statica/local/bin:$PATH"
