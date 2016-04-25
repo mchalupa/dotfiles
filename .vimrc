@@ -2,6 +2,7 @@ se nu
 syntax on
 colorscheme jellybeans
 set autoindent
+" set smartindent
 set hlsearch
 " set expandtab
 
@@ -73,6 +74,11 @@ set encoding=utf-8
 map <C-PageUp> :tabnext
 map <C-PageDown> :tabprev
 
-if filereadable(".vimrc.local") && getcwd() != $HOME
+" make make
+nnoremap <F9> :make!<cr><cr>
+" nerdtree
+map <F4> :NERDTreeToggle<CR>
+
+if filereadable(".vimrc.local")
   source .vimrc.local
 endif

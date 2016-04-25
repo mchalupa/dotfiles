@@ -1,0 +1,5 @@
+checkoutroot = os.path.expanduser('~/src')
+prefix= os.path.expanduser('~/local')
+os.environ['CFLAGS'] = '-Wall -Wextra -g'
+autogenargs="--disable-static --disable-gtk-doc CFLAGS=\'-g\'"
+makeargs = '-j4'
