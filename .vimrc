@@ -10,6 +10,7 @@ set hlsearch
 set incsearch
 
 set nolinebreak
+set pastetoggle=<F2>
 
 match ErrorMsg '\%>80v.\+' " Right margin
 2match ErrorMsg '\s\+$'      " Trailing whitespaces
