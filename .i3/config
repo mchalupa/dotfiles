@@ -181,3 +181,6 @@ bindsym $mod+o scratchpad show
 
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 3"
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 3"
+
+# set switching between us and cz layouts
+exec --no-startup-id setxkbmap -layout cz,us -option grp:alt_shift_toggle
