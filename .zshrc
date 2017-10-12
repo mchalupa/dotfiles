@@ -127,3 +127,19 @@ export CFLAGS='-Wall -Wextra -g'
 
 export EDITOR=vim
 export PATH="$HOME/.local/bin:$HOME/.cabal/bin:$HOME/statica/local/bin:$PATH"
+
+# set-up an ssh-agent
+# # http://rabexc.org/posts/pitfalls-of-ssh-agents
+# ssh-add -l &>/dev/null
+# if [ "$?" -eq 2 ]; then
+#   test -r ~/.ssh-agent && \
+#     eval "$(<~/.ssh-agent)" >/dev/null
+# 
+#   ssh-add -l &>/dev/null
+#   if [ "$?" -eq 2 ]; then
+#     (umask 066; ssh-agent -t 2000 > ~/.ssh-agent)
+#     eval "$(<~/.ssh-agent)" >/dev/null
+#     ssh-add
+#   fi
+# fi
+

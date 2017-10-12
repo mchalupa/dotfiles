@@ -1,10 +1,26 @@
 se nu
 syntax on
 colorscheme jellybeans
-set autoindent
-" set smartindent
+" set autoindent
+set smartindent
 set hlsearch
 " set expandtab
+
+" source .vimrc files from current directories (not only from HOME)
+" http://www.alexeyshmalko.com/2014/using-vim-as-c-cpp-ide/
+set exrc
+set secure
+
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'Valloric/YouCompleteMe'
+
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
 " search during typing
 set incsearch
@@ -79,7 +95,3 @@ map <C-PageDown> :tabprev
 nnoremap <F9> :make!<cr><cr>
 " nerdtree
 map <F4> :NERDTreeToggle<CR>
-
-if filereadable(".vimrc.local")
-  source .vimrc.local
-endif

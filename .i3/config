@@ -24,8 +24,9 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
+#bindsym $mod+Return exec urxvt
 bindsym $mod+Return exec terminator
-#bindsym $mod+Return exec roxterm
+#bindsym $mod+Return exec xterm
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec xterm -bg black -fg white
 
@@ -162,25 +163,27 @@ exec --no-startup-id sh -c 'feh --bg-scale "`~/Pictures/random_background.sh`"'
 bindsym $mod+Shift+r exec sh -c 'feh --bg-scale "`~/Pictures/random_background.sh`"'
 
 # set turning off screen after timeout in seconds
-exec --no-startup-id xset dpms 180
-exec --no-startup-id xrandr --output HDMI3 --right-of LVDS1
+exec --no-startup-id xset dpms 150
+exec --no-startup-id xrandr --output DP1 --above eDP1 --auto --output HDMI2 --above eDP1 --right-of DP1 --auto
 exec --no-startup-id nm-applet
 
 # redshift
 exec --no-startup-id redshift -t 5500:3700 -g 1.00 1.00 1.00 -m randr -l 48.2:17.1
 
 # volume
-bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +2%"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -2%"
-
-exec --no-startup-id xrdb -merge ~/.Xresources
-
-bindsym $mod+p move scratchpad
-bindsym $mod+o scratchpad show
+bindsym XF86AudioMute exec "pactl set-sink-mute 1 toggle"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 1 +3%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 1 -3%"
 
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 3"
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 3"
 
+exec --no-startup-id xrdb -merge ~/.Xresources
+# not needed, X does it automatically
+# exec --no-startup-id xmodmap ~/.Xmodmap
+
+bindsym $mod+p move scratchpad
+bindsym $mod+o scratchpad show
+
 # set switching between us and cz layouts
-exec --no-startup-id setxkbmap -layout cz,us -option grp:alt_shift_toggle
+exec --no-startup-id setxkbmap -layout us,cz -option grp:alt_shift_toggle
