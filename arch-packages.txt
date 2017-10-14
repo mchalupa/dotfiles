@@ -1,0 +1,1 @@
+base base-devel i3 intel-ucode xf86-video-intel iw wpa_supplicant os-prober grub zsh texlive-most texlive-lang termite redshift rubber evince git firefox dmenu texlive-core meld thunderbird feh tig clusterssh vifm openssh dialog networkmanager network-manager-applet arandr cmake cgdb rsync wget gcc clang pulseaudio pavucontrol htop lsof strace ltrace pkgfile
