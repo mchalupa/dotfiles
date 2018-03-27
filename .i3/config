@@ -25,7 +25,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec urxvt
-bindsym $mod+Return exec terminator
+#bindsym $mod+Return exec terminator
+bindsym $mod+Return exec termite
 #bindsym $mod+Return exec xterm
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec xterm -bg black -fg white
@@ -159,13 +160,14 @@ popup_during_fullscreen smart
 # set background
 #exec --no-startup-id sh ~/.fehbg
 #bindsym $mod+Shift+r exec sh ~/.fehbg
-exec --no-startup-id sh -c 'feh --bg-scale "`~/Pictures/random_background.sh`"'
-bindsym $mod+Shift+r exec sh -c 'feh --bg-scale "`~/Pictures/random_background.sh`"'
+exec --no-startup-id feh --bg-fill --randomize ~/Pictures/*
+bindsym $mod+Shift+r exec feh --bg-fill --randomize ~/Pictures/*
 
 # set turning off screen after timeout in seconds
 exec --no-startup-id xset dpms 150
 exec --no-startup-id xrandr --output DP1 --above eDP1 --auto --output HDMI2 --above eDP1 --right-of DP1 --auto
 exec --no-startup-id nm-applet
+exec --no-startup-id pasystray
 
 # redshift
 exec --no-startup-id redshift -t 5500:3700 -g 1.00 1.00 1.00 -m randr -l 48.2:17.1
