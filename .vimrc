@@ -1,10 +1,13 @@
 se nu
 syntax on
-colorscheme jellybeans
+"colorscheme jellybeans
+colorscheme desert
 " set autoindent
 set smartindent
 set hlsearch
-" set expandtab
+" search during typing
+set incsearch
+set expandtab
 
 " source .vimrc files from current directories (not only from HOME)
 " http://www.alexeyshmalko.com/2014/using-vim-as-c-cpp-ide/
@@ -29,29 +32,36 @@ set nolinebreak
 set pastetoggle=<F2>
 
 match ErrorMsg '\%>80v.\+' " Right margin
-2match ErrorMsg '\s\+$'      " Trailing whitespaces
+2match ErrorMsg '\s\s*$'      " Trailing whitespaces
+
 
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
 
-:filetype plugin on
+filetype plugin on
 
 command Gnu setl sw=2 sws=2 sts=2 ts=2 et
 
 " coding styles
-" autocmd FileType C setl sw=8 sts=8 ts=8
-" autocmd FileType python setl sw=4 sts=4 ts=4 et
-" autocmd FileType C++ setl sw=4 sts=4 ts=4 et
+autocmd FileType C setl sw=8 sts=8 ts=8 tw=79 noexpandtab
+autocmd FileType python setl sw=4 sts=4 ts=4 tw=79 et fileformat=unix
+autocmd FileType C++ setl sw=4 sts=4 ts=4 et
 autocmd FileType cpp setl sw=4 sts=4 ts=4 et
 autocmd FileType haskell setl sw=4 sts=4 ts=4 et
 autocmd FileType make setl sts=8 sw=8 ts=8 noexpandtab
 augroup filetype
-      au! BufRead,BufNewFile *.ll     set filetype=llvm
-      au! BufRead,BufNewFile *.llvm   set filetype=llvm
-      au! BufRead,BufNewFile *.cpp    set filetype=cpp
+      au! BufRead,BufNewFile *.ll     setlocal filetype=llvm
+      au! BufRead,BufNewFile *.cpp    setlocal filetype=cpp
+      au! BufRead,BufNewFile *.hpp    setlocal filetype=cpp
+      au! BufRead,BufNewFile *.c      setlocal filetype=c
+      au! BufRead,BufNewFile *.h      setlocal filetype=c
+      au! BufRead,BufNewFile *.py     setlocal filetype=python
 augroup END
+
+" Use space for folding
+nnoremap <space> za
 
 " add first tags in tree on the way to root
 set tags=./tags;/
@@ -92,6 +102,6 @@ map <C-PageUp> :tabnext
 map <C-PageDown> :tabprev
 
 " make make
-nnoremap <F9> :make!<cr><cr>
+nnoremap <F9> :!make<cr>
 " nerdtree
 map <F4> :NERDTreeToggle<CR>
